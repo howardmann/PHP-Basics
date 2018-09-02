@@ -72,6 +72,34 @@
 
   echo '<br/>';
 
+  // Associative arrays are similar to objects in JS
+  $shoppingCart = array(
+    array(
+      'item' => 'toothpaste',
+      'quantity' => 1,
+      'unit_cost' => 5.00
+    ),
+    array(
+      'item' => 'oranges',
+      'quantity' => 3,
+      'unit_cost' => 1.00
+    )
+  );
+  print_r($shoppingCart[0]);
+  
+  // Calculate cart total
+  $subTotalArr = array();
+  foreach($shoppingCart as $item) {
+    $subTotal = $item[quantity] * $item[unit_cost];
+    $name = $item[item];
+    $subTotalArr[$name] = $subTotal;
+  }
+  print_r($subTotalArr);
+  echo '<br/>Shopping Cart total: $' . array_sum($subTotalArr);
+
+
+  echo "<br/>";
+
   // Functions similar to JS
   $addNumbers = function($a, $b) {
     return $a + $b;
@@ -113,6 +141,30 @@
   echo "<br/>";
   echo $snowy->get_name();
   echo $snowy->adder(10,5);
+  
+  echo "<br/>";
+  // Classes using constructor function
+  class Cat {
+    private $name;
+    private $age;
+    function __construct($name, $age){
+      $this->age = $age;
+      $this->set_name($name);
+    }
+    function set_name($new_name) {
+      $this->name = $new_name;
+    }    
+    function get_name(){
+      return capitalize($this->name);
+    }
+    function get_age(){
+      return $this->age;
+    }
+  }
+  $midnight = new Cat('midnight', 3);
+  echo $midnight->get_name();
+  echo $midnight->get_age();
+
 ?>
 
 
