@@ -73,18 +73,19 @@
   echo '<br/>';
 
   // Associative arrays are similar to objects in JS
-  $shoppingCart = array(
-    array(
+  // Can be written using [] syntax vs array() in PHP >= 5.4 
+  $shoppingCart = [
+    [
       'item' => 'toothpaste',
       'quantity' => 1,
       'unit_cost' => 5.00
-    ),
-    array(
+    ],
+    [
       'item' => 'oranges',
       'quantity' => 3,
       'unit_cost' => 1.00
-    )
-  );
+    ]
+  ];
   print_r($shoppingCart[0]);
   
   // Calculate cart total
@@ -165,6 +166,41 @@
   echo $midnight->get_name();
   echo $midnight->get_age();
 
+  echo "<br/>";
+  // Map and filter functions
+  $school = [
+    [
+      'name' => 'john',
+      'age' => 12,
+      'sex' => 'male'
+    ],
+    [
+      'name' => 'jane',
+      'age' => 18,
+      'sex' => 'female'
+    ],
+    [
+      'name' => 'holly',
+      'age' => 14,
+      'sex' => 'female'
+    ],
+    [
+      'name' => 'ben',
+      'age' => 16,
+      'sex' => 'male'
+    ],
+  ];
+  $names = array_map(function($el){return $el[name];},$school);
+  echo "<br/>";
+  print_r($names);
+
+  
+  $males = array_filter($school, function($el){
+    return $el[sex] === 'male';
+  });
+  $maleNames = array_map(function($el){return $el[name];},$males);  
+  echo "<br/>";
+  print_r($maleNames);
 ?>
 
 
