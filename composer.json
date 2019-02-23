@@ -1,0 +1,5 @@
+{
+  "require": {
+    "kapolos/pramda": "0.9.*@dev"
+  }
+}
